@@ -1,0 +1,69 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: bio.app
+    environment:
+      REDIS_URL: "redis://redis:6379/12"
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/tmp
+      - gem-data:/usr/local/bundle
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    networks:
+      - bio-networks
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
+
+  db:
+    image: mysql:5.7
+    container_name: bio.mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - bio-networks
+
+  redis:
+    image: redis
+    command: redis-server
+    container_name: bio.redis
+    volumes:
+      - redis-data:/var/shared/redis
+    networks:
+      - bio-networks
+
+  sidekiq:
+    build: .
+    container_name: bio.sidekiq
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+      - gem-data:/usr/local/bundle
+    environment:
+      REDIS_URL: "redis://redis:6379/12"
+    depends_on:
+      - redis
+    networks:
+      - bio-networks
+    tty: true
+    stdin_open: true
+
+networks:
+  bio-networks:
+    name: bio
+    external: true
+
+volumes:
+  mysql_data:
+  gem-data:
+  redis-data:
