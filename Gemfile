@@ -79,16 +79,16 @@ end
 
 # Authentication
 gem "devise"
-gem "devise-jwt"
+# gem "devise-jwt"
 
 # Use Rack CORS forn handling Cross-Origin Resource Sharing
-gem "rack-cors"
+# gem "rack-cors"
 
 # Docs API
-gem "rswag"
+# gem "rswag"
 
 # Gem fast json
-gem "jsonapi-serializer"
+# gem "jsonapi-serializer"
 
 # Config
 gem "config"
