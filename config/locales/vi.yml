@@ -1,0 +1,39 @@
+vi:
+  activerecord:
+    attributes:
+      user:
+        confirmation_sent_at: Xác nhận gửi lúc
+        confirmation_token: Mã xác nhận
+        confirmed_at: Xác nhận lúc
+        created_at: Được tạo lúc
+        current_password: Mật khẩu hiện tại
+        current_sign_in_at: Đăng nhập lúc
+        current_sign_in_ip: Địa chỉ IP đăng nhập
+        email: Email
+        encrypted_password: Mật khẩu mã hoá
+        failed_attempts: Số lần đăng nhập thất bại
+        last_sign_in_at: Đăng nhập lần cuối
+        last_sign_in_ip: Địa chỉ IP đăng nhập lần cuối
+        locked_at: Khoá lúc
+        password: Mật khẩu
+        password_confirmation: Xác nhận mật khẩu
+        remember_created_at: Ghi nhớ được lưu lúc
+        remember_me: Ghi nhớ đăng nhập
+        reset_password_sent_at: Yêu cầu đặt lại mật khẩu gửi lúc
+        reset_password_token: Mã đặt lại mật khẩu
+        sign_in_count: Số lần đăng nhập
+        unconfirmed_email: Email chưa xác nhận
+        unlock_token: Mã mở khoá
+        updated_at: Được cập nhật lúc
+    models:
+      user: Người dùng
+  errors:
+    messages:
+      already_confirmed: đã được xác nhận, vui lòng đăng nhập để tiếp tục.
+      confirmation_period_expired: cần được xác nhận trong %{period}, xin vui lòng yêu cầu mã mới.
+      expired: đã hết hạn, vui lòng gửi yêu cầu mới.
+      not_found: không tìm thấy
+      not_locked: không bị khóa
+      not_saved:
+        one: "1 lỗi khi lưu %{resource}:"
+        other: "%{count} lỗi khi lưu %{resource}:"

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+
+  mount Ckeditor::Engine => "/ckeditor"
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount Sidekiq::Web => "/sidekiq"
+  
   root "administrator/dashboard#index"
 
   namespace :administrator do
