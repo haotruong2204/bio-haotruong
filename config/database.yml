@@ -21,11 +21,7 @@ staging:
 
 production:
   <<: *default
-  database: <%= ENV['RDS_DB_NAME'] || 'bio_production' %>
-  username: <%= ENV['RDS_USERNAME'] || 'root' %>
-  password: <%= ENV['RDS_PASSWORD'] || 'password' %>
-  host: <%= ENV['RDS_HOSTNAME'] || 'db' %>
-  port: <%= ENV['RDS_PORT'] || '3306' %>
+  database: bio_production
 
 test:
   <<: *default
