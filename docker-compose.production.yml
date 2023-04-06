@@ -14,7 +14,7 @@ services:
     depends_on:
       - db
     networks:
-      - vinara-networks
+      - bio-networks
 
   redis:
     image: redis
@@ -40,7 +40,7 @@ services:
 
   sidekiq:
     build: .
-    container_name: vinara.sidekiq
+    container_name: bio.sidekiq
     command: bundle exec sidekiq -e production
     volumes:
       - .:/app
@@ -50,7 +50,7 @@ services:
     depends_on:
       - redis
     networks:
-      - vinara-networks
+      - bio-networks
     tty: true
     stdin_open: true
 
