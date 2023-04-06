@@ -103,7 +103,7 @@ gem "annotate"
 gem "dotenv-rails"
 
 # Job
-gem "sidekiq"
+gem "sidekiq", "~> 6.4", ">= 6.4.2"
 
 # pagination
 gem "pagy"
