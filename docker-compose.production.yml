@@ -11,8 +11,10 @@ services:
       - /app/tmp
       - gem-data:/usr/local/bundle
     command: bundle exec puma -C config/puma.rb -e production
+    depends_on:
+      - db
     networks:
-      - bio-networks
+      - vinara-networks
 
   redis:
     image: redis
@@ -35,6 +37,22 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - bio-networks
+
+  sidekiq:
+    build: .
+    container_name: vinara.sidekiq
+    command: bundle exec sidekiq -e production
+    volumes:
+      - .:/app
+      - gem-data:/usr/local/bundle
+    environment:
+      REDIS_URL: "redis://redis:6379/12"
+    depends_on:
+      - redis
+    networks:
+      - vinara-networks
+    tty: true
+    stdin_open: true
 
 networks:
   bio-networks:
