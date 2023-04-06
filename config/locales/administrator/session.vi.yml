@@ -1,0 +1,10 @@
+vi:
+  administrator:
+    sessions:
+      new:
+        email: "Email"
+        password: "Mật Khẩu"
+        login_form: "Form Đăng Nhập"
+        placeholder_email: "Nhập email ..."
+        placeholder_password: "Nhập mật khẩu ..."
+        submit: "Đăng Nhập"
